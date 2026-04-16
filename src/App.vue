@@ -38,6 +38,10 @@
             <el-icon><House /></el-icon>
             <span>仓库信息维护</span>
           </el-menu-item>
+          <el-menu-item index="/location">
+            <el-icon><House /></el-icon>
+            <span>料位信息维护</span>
+          </el-menu-item>
         </el-menu>
       </div>
     </el-aside>
