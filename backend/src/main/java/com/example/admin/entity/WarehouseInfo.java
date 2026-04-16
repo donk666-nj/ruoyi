@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDateTime;
 
-@TableName("warehouse_info")
+@TableName("MMWM_STOCK_INFO")
 public class WarehouseInfo {
     @TableId(type = IdType.AUTO)
     private Long id;

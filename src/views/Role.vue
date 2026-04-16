@@ -32,7 +32,9 @@
               @change="handleStatusChange(scope.row)"></el-switch>
           </template>
         </el-table-column>
-        <el-table-column prop="createTime" label="创建时间" width="180"></el-table-column>
+        <el-table-column prop="createTime" label="创建时间" width="180">
+          <template #default="scope">{{ formatTime(scope.row.createTime) }}</template>
+        </el-table-column>
         <el-table-column label="操作" width="150">
           <template #default="scope">
             <el-button type="primary" size="small" @click="handleEdit(scope.row)">编辑</el-button>
@@ -158,6 +160,17 @@ const handleStatusChange = async (row) => {
   } catch (e) {
     row.status = row.status === 1 ? 0 : 1
   }
+}
+
+const formatTime = (value) => {
+  if (!value) return ''
+  // 如果是数字（Unix 时间戳秒），乘以 1000 转毫秒
+  if (typeof value === 'number') {
+    return new Date(value * 1000).toLocaleString()
+  }
+  // 如果是字符串（如 "2026-04-14 10:30:00"），直接解析
+  const d = new Date(value)
+  return isNaN(d.getTime()) ? value : d.toLocaleString()
 }
 
 onMounted(() => { loadRoles() })

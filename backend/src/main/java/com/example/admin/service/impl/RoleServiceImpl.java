@@ -22,6 +22,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     public boolean saveRole(Role role) {
+        role.setCreateTime(new java.util.Date());
         return save(role);
     }
 
